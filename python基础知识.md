@@ -64,7 +64,26 @@ print(b)
 
 ![image-20230902160458956](./python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.assets\image-20230902160458956.png)
 
-![image-20230902161047379](./python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.assets\image-20230902161047379.png)
+```python
+# 练习1：求曲边图形的面积
+import math
+
+n = 10000  # n就是把2*pi均分成n等分，这里用了极限的思想
+width = 2 * math.pi / n  # 每一份小矩形的宽度
+# 方法一:利用for循环
+x = []
+y = []
+for i in range(n):
+    x.append(i * width)  # 得到包含每一个小矩形的宽度的数组
+for i in x:
+    y.append(abs(math.sin(i)))  # 得到每一个小矩形的长度的数组
+S = sum(y) * width  # 先将长度求和再与宽度做积
+print(S)
+
+# 方法二:利用列表推导式
+s = [abs(math.sin(i * width)) * width for i in range(n)]  # 利用列表推导式得到每一个小矩形的面积的数组
+print(sum(s))
+```
 
 ## 三、程序流程控制语句
 

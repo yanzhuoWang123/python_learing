@@ -144,3 +144,7 @@ print(dic)
 res = dic['h']
 print(res)
 ```
+
+![image-20230904135722230](E:\python学习\python基础知识.assets\image-20230904135722230.png)
+
+![image-20230904135828256](python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.assets/image-20230904135828256.png)

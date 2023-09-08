@@ -127,9 +127,16 @@ else:
 
 ## 3、***练习二：冒泡排序***
 
-![image-20230903103452734](./assets/image-20230903103452734.png)
-
-![image-20230903103519780](assets/image-20230903103519780.png)
+```python
+x = [-7, -4.5, 0, 7, 4, 5, 9, 3.4, 7.8, 9.2, 1.1]
+n = len(x)
+print(n)
+for i in range(n):
+    for j in range(i):
+        if x[j] > x[i]:
+            x[i], x[j] = x[j], x[i]
+print(x)
+```
 
 # 四、字符串操作
 

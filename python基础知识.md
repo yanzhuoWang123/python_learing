@@ -160,6 +160,59 @@ res = dic['h']
 print(res)
 ```
 
-## 4、好好好
+## 4、字典元素的增删改查
 
-好好好好
+修改元素 可以检索原来元素直接赋值
+
+```python
+dic['h'] = 100
+```
+
+ 新增键值对
+
+```python
+dic = {'h': 'hello', 'w': 'world', 0: 0.4, 'a': 'b', 'h': 'hehe'}
+dic['hw'] = 'hello world'
+dic.update({1: 2, 3: 4})
+print(dic)
+#输出结果
+{'h': 'hehe', 'w': 'world', 0: 0.4, 'a': 'b', 'hw': 'hello world', 1: 2, 3: 4} 
+```
+
+删除键值对
+
+```python
+del dic['h']
+print(dic)
+#输出结果及与原来对比
+{'h': 'hehe', 'w': 'world', 0: 0.4, 'a': 'b', 'hw': 'hello world', 1: 2, 3: 4}
+{'w': 'world', 0: 0.4, 'a': 'b', 'hw': 'hello world', 1: 2, 3: 4}
+```
+
+## 5、字典推导式
+
+```python
+dic1 = {i:i**2 for i in range(10)}
+print(dic1)
+#输出结果
+{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+```
+
+# 五、python文件操作
+
+## 1、文件操作
+
+```python
+# 文件操作
+f = open("文件名.txt", 'r')  # 逗号前输入要打开的文件，后缀不能丢，逗号后边的是打开文件的方式
+txt = f.read()  # 读取文件内容
+txt_lines = f.readlines()  # 读取文件内容,以行为单位读取内容，也就是一个换行符一条内容
+f.close()  # 关闭文件，释放内存
+print(txt)
+```
+
+![image-20230908172243414](assets/image-20230908172243414.png)
+
+![image-20230908172308269](assets/image-20230908172308269.png)
+
+![image-20230908172340933](assets/image-20230908172340933.png)

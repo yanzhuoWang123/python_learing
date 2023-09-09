@@ -223,3 +223,53 @@ print(txt)
 ![image-20230908172308269](assets/image-20230908172308269.png)
 
 ![image-20230908172340933](assets/image-20230908172340933.png)
+
+## 2、练习三 统计文件中的单词数
+
+```python
+import re
+f = open('文件名称','r')
+txt = f.read() #读取进来的数据是字符串
+f.close()
+txt = txt.lower() #将所有字母转化成小写
+txt = re.sub('[,.?:"\'!-]','',txt)  #去除文本中的标点符号，将输入的标点符号替换为空，对象是txt文件
+words = txt.split() #单词分割
+word_sq = {} #建立一个空字典
+for i in words:
+    for i not in word_sq.keys():
+        word_sq[i] = 1
+    else:
+        word_sq[i] += 1
+ res = sorted(word_sq.items(),key=lambda x:x[1],reverse=True) #排序 lambda是自定义的一个函数，在下一章节中会详细介绍
+print(res)
+
+```
+
+# 六、函数
+
+## 1、python函数自定义
+
+```python
+#函数自定义
+#第一种方式
+def Sum(x,y):   #括号中的参数，左边如果赋值，右边一定要赋值，否则会报错。如果右边赋值左边不赋值则不报错
+    return x+y
+#第二种方式
+y = lambda x:x**2  #利用lambda定义一个简单的函数，冒号左边是变量，右边是返回值
+y = lambda x:x[1]
+```
+
+## 2、练习四 自定义一个求序列偶数个数的函数
+
+```python
+def su(x):
+    y = []
+    for i in x:
+        if i % 2 == 0:
+            y.append(i)
+    return y
+
+
+res = su([1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(res)
+```

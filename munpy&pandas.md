@@ -1,6 +1,6 @@
 # 数据分析之numpy&pandas
 
-## 一、mumpy
+## 一、NumPy
 
 ## 1.1 、numpy属性
 

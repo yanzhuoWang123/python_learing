@@ -32,7 +32,6 @@ a = np.array([[1,2,3],
 print(a) #输出数组
 print(a.type) #输出类型
 [[1 2 3]
- [4 5 6]]
+ [4 5 6]
 object
 ```
-

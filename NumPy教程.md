@@ -1,4 +1,4 @@
-# 一、NumPy Ndarray 对象
+NumPy Ndarray 对象
 
 NumPy 最重要的一个特点是其 N 维数组对象 ndarray，它是一系列同类型数据的集合，以 0 下标为开始进行集合中元素的索引。
 
@@ -37,4 +37,30 @@ numpy.array(object, dtype = None, copy = True, order = None, subok = False, ndmi
 | order  | 创建数组的样式，C为行方向，F为列方向，A为任意方向（默认） |
 | subok  | 默认返回一个与基类类型一致的数组                          |
 | ndmin  | 指定生成数组的最小维度                                    |
+
+##### 一、创建ndarray
+
+###### 1. 使用np.array()由python list创建
+
+- 参数为列表： [1, 4, 2, 5, 3]
+
+注意：
+
+- numpy默认ndarray的所有元素的类型是相同的
+- 如果传进来的列表中包含不同的类型，则统一为同一类型，优先级：str>float>int
+- ndarray的数据类型：
+
+  - int:   int8、uint8、int16、int32、int64
+  - float:   float16、float32、float64
+  - str:  字符串
+
+```python 
+
+n = np.array([1,2,3,4,5,6,7,8,9])
+n
+# 输出
+array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+```
+
+## 二、
 

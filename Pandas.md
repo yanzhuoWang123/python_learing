@@ -10,8 +10,6 @@
 
 #### 强大的数据处理和分析工具
 
-<img src="./images/pandas1.png" style="zoom:150%;" />
-
 ####  一、Pandas课程介绍
 
 - Pandas 是基于NumPy的一种工具，该工具是为解决数据分析任务而创建的, Pandas提供了大量能使我们快速便捷地处理数据的函数和方法。
@@ -45,7 +43,7 @@ list1 = [11, 22, 33, 44]
 n = np.array(list1)
 # type(n)  # numpy.ndarray
 
-s = Series(n)
+s = pd.Series(n)
 display(n, s, type(s))  
 # pandas.core.series.Series
 ```
@@ -93,7 +91,7 @@ d = {
     'c': np.random.randint(0, 10, size=(2,3)),
     'd': np.random.randint(0, 10, size=(2,3))
 }
-s = Series(d)
+s = pd.Series(d)
 display(s)
 
 
@@ -283,7 +281,7 @@ d = {
     'age' : [7, 9, 8],
     'sex': ['男', '女', '男']
 }
-df = DataFrame(d)
+df = pd.DataFrame(d)
 ```
 
 ###### DataFrame属性和方法

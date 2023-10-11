@@ -345,6 +345,7 @@ df[['语文']]
 
 - 使用.loc[ ]加index来进行行索引
 - 使用.iloc[ ]加整数来进行行索引
+- 如果是先对列进行索引则不需要加.loc或.iloc
 
 同样返回一个Series，index为原来的columns。
 

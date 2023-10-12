@@ -809,8 +809,8 @@ df3 = df.loc['1班', '期中']
 
 # axis : 0表式行index, 1表式列columns
 df3.sum()
-df3.sum(axis=0)  # 对同一列的多行进行求和
-df3.sum(axis=1)  # 对同一行的多列进行求和
+df3.sum(axis=0)  # 对同一列的多行进行求和  #按照行的方向来计算
+df3.sum(axis=1)  # 对同一行的多列进行求和  #按照列的方向来计算
 
 
 # 多层索引聚合操作
@@ -822,7 +822,17 @@ df.sum(axis=0, level=1)   # 表式 行 索引中的最里层
 df.sum(axis=1, level=1)   # 表式 列 索引中的最里层
 ```
 
+![image-20231012160512656](assets/image-20231012160512656.png)
 
+```python
+这个警告是Pandas库在未来版本中将会弃用的功能引起的。它指出使用DataFrame和Series的sum函数时，不再推荐使用level参数，而应该使用groupby方法。
+
+具体来说，你在代码中使用了df.sum(axis=0, level=1)的语法，可以将其改为df.groupby(level=1).sum()来避免这个警告。
+
+修改后的代码如下：
+df.groupby(level=1).sum()
+这样就可以避免这个警告了，并且你的代码将在未来版本的Pandas中保持兼容性。
+```
 
 #### 五、Pandas数据合并
 

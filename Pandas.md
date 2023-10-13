@@ -971,7 +971,7 @@ df2 = pd.DataFrame({
 display(df1, df2)
 
 # 合并
-df1.merge(df2)
+df1.merge(df2)           #看两个df对象共同的column去进行匹配上
 ```
 
 ###### 4) key的规范化

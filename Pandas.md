@@ -996,7 +996,7 @@ df1.merge(df2, on='id')
 df1.merge(df2, on='name')
 ```
 
-- 使用left_on和right_on指定左右两边的列作为key，当左右两边的key都不想等时使用
+- 使用left_on和right_on指定左右两边的列作为key，当左右两边的key都不相等时使用
 
 ```python
 # 如果没有相同的列名，则需要使用left_on和right_on来分别指定2个表的列作为连接的字段
@@ -1072,7 +1072,7 @@ df1.merge(df2, on='id', suffixes=['_表1', '_表2'])
 ###### merge合并总结:
 
 - 合并有三种现象: 一对一, 多对一, 多对多.
-- 合并默认会找相同的列名进行合并, 如果有多个列名相同,用on来指定.
+- 合并默认会找相同的列名进行合并, 如果有多个列名相同,用on来指定. 
 - 如果没有列名相同,但是数据又相同,可以通过left_on, right_on来分别指定要合并的列.
 - 如果想和index合并, 使用left_index, right_index来指定.
 - 如果多个列相同,合并之后可以通过suffixes来区分.

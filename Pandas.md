@@ -1224,7 +1224,7 @@ inplace=True 修改原数据
 ```python
 df2 = df.copy()
 
-# inplace=True: 表式修改原数据
+# inplace=True: 表示修改原数据
 df2.dropna(inplace=True)
 df2
 ```

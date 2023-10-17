@@ -275,3 +275,206 @@ def su(x):
 res = su([1, 2, 3, 4, 5, 6, 7, 8, 9])
 print(res)
 ```
+
+## 3、python常见函数及应用
+
+#### 3.1`append`函数
+
+```python
+append()是列表对象的一个方法，用于在列表的末尾添加一个元素。它的定义如下：
+
+list.append(x)
+其中，list表示列表对象，x表示要添加到列表末尾的元素。
+
+使用append()方法时，会修改原始列表，并将指定的元素添加到列表的末尾。例如：
+
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)  # 输出: [1, 2, 3, 4]
+在上面的例子中，开始时my_list包含 [1, 2, 3]。然后，通过调用append(4)方法，将数字4添加到了列表的末尾，最终结果变为 [1, 2, 3, 4]。
+
+值得注意的是，append()方法不会返回任何值，它直接操作修改了原始列表。因此，在使用append()时，不需要将其赋值给其他变量。
+```
+
+#### 3.2`insert`函数
+
+```python
+insert() 是列表对象的一个方法，用于在指定位置插入一个元素。它的语法如下：
+
+list.insert(index, obj)
+其中，list表示列表对象，index表示要插入新元素的索引（从0开始计数），obj表示要插入的元素。
+
+使用 insert() 方法时，它会在指定的索引处插入一个新元素，并将原来索引位置以后的所有元素向后移动一个位置。例如：
+
+my_list = [1, 2, 3]
+my_list.insert(1, 'a')
+print(my_list)  # 输出: [1, 'a', 2, 3]
+在上面的例子中，开始时 my_list 包含 [1, 2, 3]。调用 insert(1, 'a') 方法会将字符串 'a' 插入到 my_list 的索引1处，并将原来索引为1及其之后的所有元素向后移动一个位置，最终结果变为 [1, 'a', 2, 3]。
+
+值得注意的是，与 append() 不同，insert() 方法会影响到原始列表，并返回 None 而不是修改后的列表。
+```
+
+#### 3.3`split`函数
+
+```python
+split()是字符串的一个方法，用于根据指定的分隔符将字符串分割成多个子串，并将它们存储在列表中。它的语法如下：
+
+str.split([sep[, maxsplit]])
+其中，str表示要分割的字符串，sep表示用于分割字符串的分隔符，默认为所有空白字符（包括空格、制表符和换行符），maxsplit表示最大分割次数，默认为-1，表示不限制分割次数。
+
+使用 split() 方法时，它会将指定字符串按照分隔符进行切割，并返回存储有所有分割后子串的列表。例如：
+
+my_string = "The quick brown fox jumps over the lazy dog"
+my_list = my_string.split()
+print(my_list)  # 输出: ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+在上面的例子中，将字符串 "The quick brown fox jumps over the lazy dog" 赋值给变量 my_string。调用 split() 方法时，由于没有传入任何参数，因此根据默认分隔符（空白字符）将字符串分割成多个子串，并将它们存储在列表中。
+
+你还可以自定义分隔符，例如：
+
+my_string = "the,quick,brown,fox"
+my_list = my_string.split(",")
+print(my_list)  # 输出: ['the', 'quick', 'brown', 'fox']
+在上面的例子中，将字符串 "the,quick,brown,fox" 赋值给变量 my_string。调用 split(",") 方法时，使用逗号作为分隔符将字符串分割成多个子串，并将它们存储在列表中。
+```
+
+#### 3.4`len`函数
+
+```python
+len() 是一个内置函数，用于返回对象的长度或元素个数。它的语法如下：
+
+len(obj)
+其中，obj表示要计算长度的对象，可以是字符串、列表、元组、字典、集合等。
+
+使用 len() 函数时，它会返回给定对象中元素的数量。例如：
+
+my_list = [1, 2, 3, 4, 5]
+length = len(my_list)
+print(length)  # 输出: 5
+在上面的例子中，将列表 [1, 2, 3, 4, 5] 赋值给变量 my_list，然后调用 len() 函数计算列表的长度，并将结果赋值给变量 length，最终输出变量 length 的值为 5，表示该列表中有5个元素。
+
+类似地，你还可以使用 len() 函数计算其他类型的对象的长度，比如字符串：
+
+my_string = "Hello, World!"
+length = len(my_string)
+print(length)  # 输出: 13
+在上面的例子中，将字符串 "Hello, World!" 赋值给变量 my_string，然后调用 len() 函数计算字符串的长度，并将结果赋值给变量 length，最终输出变量 length 的值为 13，表示该字符串由13个字符组成。
+```
+
+#### 3.5`input`函数
+
+```python
+input() 是一个内置函数，用于从用户处获取输入信息。它的语法如下：
+
+input([prompt])
+其中，prompt 是一个可选参数，用于在获取用户输入前向用户显示一个提示消息。
+
+使用 input() 函数时，程序会暂停执行，等待用户在终端或命令行中输入信息。用户可以输入任意类型的数据，包括字符串、数字等。当用户按下回车键后，该函数会将用户输入的内容作为字符串返回。
+
+以下是一个简单的示例：
+
+name = input("请输入您的姓名：")
+print("您好，" + name)
+在这个例子中，调用 input() 函数并传入一个提示消息 "请输入您的姓名：" 。程序会在终端或命令行中显示该提示消息，并等待用户输入。用户可以在终端中输入他们的姓名，然后按下回车键。input() 函数会将用户输入的内容以字符串的形式返回，并将其赋值给变量 name。然后程序将打印出一条问候消息，其中包含用户输入的姓名。
+
+需要注意的是，input() 函数返回的始终是一个字符串。如果需要将用户输入解释为其他类型（例如整数或浮点数），可以使用适当的转换函数（例如 int() 或 float()）将其转换为所需的类型。
+```
+
+#### 3.6`remove`函数
+
+```python
+remove() 是列表（list）的一个方法，用于从列表中移除指定值的元素。它的语法如下：
+
+list.remove(obj)
+其中，list表示要进行删除操作的列表，obj表示要从列表中移除的元素。
+
+使用 remove() 方法时，它会从列表中寻找第一个等于指定元素的值，并将其移除。如果列表中不存在该元素，则会抛出 ValueError 异常。例如：
+
+my_list = [1, 2, 3, 4, 5]
+my_list.remove(3)
+print(my_list)  # 输出: [1, 2, 4, 5]
+在上面的例子中，将列表 [1, 2, 3, 4, 5] 赋值给变量 my_list，然后调用 remove(3) 方法移除列表中第一个值为 3 的元素。由于该元素存在于列表中，因此将其从列表中移除，并将剩余的元素 [1, 2, 4, 5] 存储在变量 my_list 中。
+
+如果 remove() 方法尝试从列表中移除不存在的元素，则会引发 ValueError 异常。例如：
+
+my_list = [1, 2, 3, 4, 5]
+my_list.remove(6)  # 抛出 ValueError：list.remove(x): x not in list
+在上面的例子中，尝试从列表 [1, 2, 3, 4, 5] 中移除值为 6 的元素。由于该元素不存在于列表中，因此会抛出 ValueError 异常。
+```
+
+#### 3.7`strip`函数
+
+```python
+strip() 是字符串的一个方法，用于去除字符串两端指定的字符（默认为空格）或字符序列。它的语法如下：
+
+str.strip([chars])
+其中，str 表示要进行处理的字符串，chars 是一个可选参数，表示要去除的字符或字符序列。
+
+使用 strip() 方法时，它会从字符串的开头和结尾开始，连续地去除所有在 chars 参数中指定的字符或字符序列，直到遇到第一个不在 chars 中的字符为止。如果没有提供 chars 参数，则默认去除字符串两端的空格。
+
+以下是一些示例：
+
+str1 = "  hello world  "
+str2 = "---hello---world---"
+str3 = "   hello world"
+
+print(str1.strip())     # 输出: "hello world"
+print(str2.strip("-"))  # 输出: "hello---world"
+print(str3.strip())     # 输出: "hello world"
+在这些示例中，分别对字符串 str1、str2 和 str3 调用 strip() 方法。由于没有指定 chars 参数，它们都会删除字符串两端的空格字符。
+
+需要注意的是，strip() 方法返回一个新的字符串，原始字符串并未被修改。如果需要将修改后的结果保存，可以将其赋值给一个新的变量。如果希望在原始字符串上进行修改，可以使用赋值运算符将其重新赋值。
+```
+
+#### 3.8`lower&upper`函数
+
+```python
+lower() 是字符串的一个方法，用于将字符串中的所有大写字母转换为小写字母。它的语法如下：
+
+str.lower()
+其中，str 表示要进行处理的字符串。
+
+使用 lower() 方法时，它会将字符串中的所有大写字母转换为对应的小写字母，并返回一个新的字符串。原始字符串并未被修改。
+
+以下是两个示例：
+
+str1 = "Hello World"
+str2 = "PYTHON"
+
+print(str1.lower())  # 输出: "hello world"
+print(str2.lower())  # 输出: "python"
+在上面的示例中，分别对字符串 str1 和 str2 调用 lower() 方法。它们会将字符串中的所有大写字母转换为小写字母，并返回新的字符串。
+
+
+str3 = "hello world"
+str4 = "python"
+
+print("Hello World")
+print("PYTHON")
+在上面的示例中，分别对字符串 str3 和 str4 调用了 upper()方法。 它们会将字符串中的小写字母转换为大写字母，并返回新的字符串。
+需要注意的是，lower() 方法只会转换大写字母，而对于非字母字符不做任何改变，upper()只转换小写字母。
+```
+
+#### 3.9 `title和capitalize`函数的区别
+
+```python
+title() 和 capitalize() 都是字符串的方法，用于将字符串中的第一个字符转换为大写字母。它们的区别在于，title() 方法会将每个单词的第一个字符都转换为大写字母，而 capitalize() 方法只会将第一个单词的第一个字符转换为大写字母。
+
+下面我们分别来介绍这两个方法的使用：
+
+title()
+title() 方法用于将字符串中每个单词的第一个字符转换为大写字母，其余字符转换为小写字母，返回新的字符串。示例如下：
+
+string = "hello world, how are you?"
+print(string.title()) # 输出: "Hello World, How Are You?"
+在上面的示例中，title() 方法将字符串中每个单词的第一个字符转换为大写字母，其余字符都转换为小写字母，并返回了新的字符串。
+
+capitalize()
+capitalize() 方法用于将字符串中第一个字符转换为大写字母，返回新的字符串。示例如下：
+
+string = "hello world"
+print(string.capitalize()) # 输出: "Hello world"
+在上面的示例中，capitalize() 方法将字符串中第一个字符 "h" 转换为大写字母 "H"，并返回了新的字符串。
+
+需要注意的是，capitalize() 方法只会将第一个单词的第一个字符转换为大写字母，而后面的单词和字符不会改变。
+```
+

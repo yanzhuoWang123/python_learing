@@ -261,6 +261,55 @@ y = lambda x:x**2  #利用lambda定义一个简单的函数，冒号左边是变
 y = lambda x:x[1]
 ```
 
+```python
+在 Python 中，您可以使用 def 关键字来定义自定义函数。函数的语法格式如下：
+
+def function_name(arguments):
+    # 函数体
+    # 执行函数操作
+    return result
+其中：
+
+function_name 是您为函数选择的名称。
+arguments 是函数的参数列表，可以包含零个或多个参数，每个参数以逗号分隔。
+函数体 是函数的具体实现，包括要执行的操作、逻辑和算法等。
+return 语句用于指定函数的返回值。可以选择性地返回一个或多个值。
+以下是一个示例函数，它接受两个参数，并返回它们的和：
+
+def add_numbers(x, y):
+    sum = x + y
+    return sum
+您可以调用这个函数并传递参数来获取结果：
+
+python
+result = add_numbers(5, 3)
+print(result)  # 输出 8
+在以上示例中，我们定义了一个名为 add_numbers 的函数，它接受两个参数 x 和 y。函数体中计算了它们的和，并通过 return 语句返回了结果。然后，我们调用了这个函数，并打印了返回的结果。
+
+在 Python 中，函数的参数不需要显式地规定类型。与一些其他编程语言不同，Python 是一种动态类型语言，它具有强大的灵活性。
+
+这意味着在函数定义中，您无需指定参数的类型。您可以将任何类型的参数传递给函数，而不必事先声明参数的数据类型。Python 会根据实际传入的参数确定其类型。
+
+以下是一个示例函数，展示了在函数定义和调用过程中无需指定参数类型：
+
+def greet(name):
+    greeting = "Hello, " + name + "!"
+    return greeting
+
+result = greet("Alice")
+print(result)  # 输出 "Hello, Alice!"
+
+result = greet(20)
+print(result)  # 输出 "Hello, 20!"
+在上述示例中，greet() 函数接受一个参数 name，它可以是任何类型。我们可以将字符串 "Alice" 或整数 20 作为参数传递给这个函数。Python 会根据实际传入的参数来确定 name 的类型，并在函数体内执行相应的操作。
+
+虽然 Python 不要求指定参数类型，但这也意味着您需要在函数内部确保参数的类型正确，以避免潜在的错误。您可以使用条件语句、类型检查等方法来验证参数的类型。
+
+总而言之，在 Python 中，函数的参数不需要规定类型，允许接受任意类型的参数。这是 Python 动态类型语言的一项特性。
+```
+
+
+
 ## 2、练习四 自定义一个求序列偶数个数的函数
 
 ```python

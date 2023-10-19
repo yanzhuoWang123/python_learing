@@ -673,3 +673,84 @@ print(my_list)  # 输出：[5, 4, 3, 2, 1]
 需要注意的是，与 sort() 方法类似，reverse() 方法也是直接在原始列表上进行修改的，并且它没有返回值。如果你想要得到一个新的已反转列表，可以先使用切片的方式复制一份原始列表，再对复制后的列表进行反转操作。
 ```
 
+#### 3.15 python format 格式化函数
+
+```python
+https://www.runoob.com/python/att-string-format.html
+```
+
+#### 3.16 map函数
+
+```python
+map() 函数是 Python 的一个内置函数，它的作用是将一个函数应用于一个可迭代对象（迭代器），并返回一个由结果组成的迭代器。
+
+map() 函数的定义如下：
+
+map(function, iterable, ...)
+其中：
+
+function: 要应用于每个元素的函数。该函数可以是任何可调用对象，例如一个函数、lambda 函数、方法等。
+
+iterable: 可迭代对象，它可以是一个序列（如列表、元组、字符串）、一个迭代器、一个集合或任何支持迭代协议的对象。
+
+map() 函数的工作原理如下：
+
+对于给定的 iterable 中的每个元素，map() 函数都会调用 function，并将该元素作为参数传递给它。然后，将返回值添加到结果列表中，最后返回结果列表。如果有多个可迭代对象，则 map() 函数将并行地迭代它们。
+
+以下是一些使用 map() 函数的示例：
+
+将列表中的每个元素转换为字符串
+lst = [1, 2, 3, 4, 5]
+result = list(map(str, lst))
+print(result)  # ['1', '2', '3', '4', '5']
+
+计算两个列表中相应元素的平均值
+a = [1, 2, 3, 4, 5]
+b = [10, 11, 12, 13, 14]
+result = list(map(lambda x, y: (x + y) / 2, a, b))
+print(result)  # [5.5, 6.5, 7.5, 8.5, 9.5]
+
+将输入的字符串列表转换为浮点数列表
+lst = ['1.2', '2.4', '3.6', '4.8']
+result = list(map(float, lst))
+print(result)  # [1.2, 2.4, 3.6, 4.8]
+```
+
+#### 3.17 in 方法
+
+```python
+in 是 Python 中的一个运算符，用于检查一个值是否存在于某个集合（如列表、元组、字符串）中。
+
+in 运算符的使用形式如下：
+
+value in collection
+其中，value 是要检查是否存在的值，而 collection 则是作为集合的对象。
+
+in 运算符的工作原理如下：
+
+如果 collection 是一个列表、元组或字符串，in 运算符将检查 value 是否与其中的任何元素相等。
+
+对于列表和元组，如果存在与 value 相等的元素，则返回 True，否则返回 False。
+对于字符串，如果 value 是一个子字符串，则返回 True，否则返回 False。
+如果 collection 是一个字典，in 运算符将检查 value 是否为字典的键之一。
+
+如果 value 是一个字典的键，返回 True，否则返回 False。
+以下是一些使用 in 运算符的示例：
+
+# 检查列表中的元素
+lst = [1, 2, 3, 4, 5]
+print(3 in lst)     # True
+print(6 in lst)     # False
+
+# 检查字符串中的子字符串
+text = "Hello, world!"
+print("world" in text)      # True
+print("python" in text)     # False
+
+# 检查字典中的键
+d = {"a": 1, "b": 2, "c": 3}
+print("a" in d)     # True
+print("d" in d)     # False
+在上面的示例中，in 运算符用于检查列表、字符串和字典中的元素或键是否存在。
+```
+

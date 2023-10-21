@@ -675,11 +675,7 @@ print(my_list)  # 输出：[5, 4, 3, 2, 1]
 需要注意的是，与 sort() 方法类似，reverse() 方法也是直接在原始列表上进行修改的，并且它没有返回值。如果你想要得到一个新的已反转列表，可以先使用切片的方式复制一份原始列表，再对复制后的列表进行反转操作。
 ```
 
-#### 3.15 python format 格式化函数
-
-```python
-https://www.runoob.com/python/att-string-format.html
-```
+#### 3.15 (python format 格式化函数)[E:\python学习\python的格式化输出.md]
 
 #### 3.16 map函数
 

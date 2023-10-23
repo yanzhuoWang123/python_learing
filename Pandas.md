@@ -1326,6 +1326,36 @@ df = pd.DataFrame(data=data, index=index, columns=columns)
 
 # replace还经常用来替换NaN元素
 df.replace({1: 100})
+
+replace()方法的语法如下：
+
+DataFrame.replace(to_replace=None, value=None, inplace=False, limit=None, regex=False, method='pad')
+参数说明：
+
+to_replace：要替换的值，可以是单个值、列表、字典等。当需要替换多个值时，可以传入字典类型的值进行批量替换。
+value：替换后的新值，可以是单个值或与to_replace对应的列表或字典。
+inplace：是否在原地修改DataFrame，默认为False，表示返回一个修改后的副本。若设置为True，则原地修改DataFrame，不返回副本。
+limit：替换的次数限制，如果指定了此参数，则只替换前limit次出现的值，默认为None，表示替换所有匹配到的值。
+regex：是否启用正则表达式来匹配替换，默认为False。如果设置为True，则to_replace参数可以是正则表达式。
+method：当to_replace参数为单个值时，指定替换的方法。可选值有 'pad'（向前填充）、'bfill'（向后填充）和'nearest'（使用最近的非NaN值填充）。
+使用示例：
+
+将DataFrame中的特定值替换为新值：
+
+df.replace(to_replace=1, value=100)
+批量替换多个值：
+
+df.replace(to_replace={1: 100, 2: 200})
+替换特定列的值：
+
+df.replace(to_replace=1, value=100, subset=['Python', 'Java'])
+使用正则表达式进行替换：
+
+df.replace(to_replace=r'^[a-z]+$', value='unknown', regex=True)
+在原地修改DataFrame：
+
+df.replace(to_replace=1, value=100, inplace=True)
+以上是replace()方法的基本用法和常用参数说明，根据具体需求可以灵活使用。
 ```
 
 ###### 2) map()函数: 适合处理某一单独的列
@@ -1333,6 +1363,33 @@ df.replace({1: 100})
 ```python
 df2 = df.copy()
 df2
+
+在 Pandas 中，map() 函数用于对 Series 对象中的值进行映射替换。其语法如下：
+
+Series.map(arg, na_action=None)
+参数说明：
+
+arg：映射关系，可以是字典、Series、函数或其他可调用对象。
+na_action：可选参数，指定对于缺失值的处理方式，默认为 None。可选值包括 None（保持不变）、ignore（忽略缺失值）和 raise（抛出异常）。
+map() 方法将会返回一个新的 Series 对象，其中包含映射后的值。下面是一些常见的使用方式：
+
+使用字典进行映射：
+
+series.map({'A': 'Apple', 'B': 'Banana', 'C': 'Cherry'})
+这会将 Series 对象中的 'A' 替换为 'Apple'，'B' 替换为 'Banana'，'C' 替换为 'Cherry'，其他值保持不变。
+
+使用函数进行映射：
+
+series.map(lambda x: x**2)
+这会对 Series 对象中的每个值应用给定的函数，例如将每个值平方。
+
+使用 Series 进行映射：
+
+mapping_series = pd.Series({'A': 'Apple', 'B': 'Banana', 'C': 'Cherry'})
+series.map(mapping_series)
+这会使用另一个 Series 对象作为映射关系，将 Series 对象中的值根据其在 mapping_series 中的对应关系进行替换。
+
+需要注意的是，map() 方法对于 DataFrame 对象来说并不适用，如果要对整个 DataFrame 进行映射替换，可以使用 applymap() 方法。此外，map() 方法只适用于 Series 对象，而不适用于 DataFrame 中的列或行。
 
 # map是Series调用，不能使用DataFrame调用
 df2['Python'].map({12: 100, 11: 90})
@@ -1373,6 +1430,55 @@ df3.rename(columns={'Python': 'PYTHON'})  # 更改列索引
 ```
 
 ###### 4) apply()函数：既支持 Series，也支持 DataFrame
+在 Pandas 中，`apply()` 函数用于对 DataFrame 或 Series 进行元素级别的操作。它可以接受一个函数作为参数，并将其应用到每个元素上，返回一个新的 Series 或 DataFrame。
+
+`apply()` 函数的语法如下：
+
+对于 DataFrame：
+
+```python
+df.apply(func, axis=0, broadcast=False, raw=False, result_type=None, args=(), **kwds)
+```
+
+对于 Series：
+
+```python
+series.apply(func, convert_dtype=True, args=(), **kwds)
+```
+
+常用参数说明：
+
+- `func`：函数或可调用对象，用于对每个元素进行操作。
+- `axis`：指定应用函数的轴，默认为 0（每列），可以设置为 1（每行）。
+- `args`：额外的参数，传递给函数。
+
+下面是一些使用 `apply()` 函数的示例：
+
+1. 对 DataFrame 的每列应用函数：
+
+```python
+ df.apply(lambda x: x.max() - x.min())
+```
+
+   这会对每列数据应用 `lambda` 函数，计算每列的最大值与最小值的差值。
+
+2. 对 DataFrame 的每行应用函数：
+
+   ```python
+   df.apply(lambda x: x['A'] + x['B'], axis=1)
+   ```
+
+   这会对每行数据应用 `lambda` 函数，计算每行的 'A' 列与 'B' 列的和。
+
+3. 对 Series 应用函数：
+
+   ```python
+   Codeseries.apply(lambda x: x**2)
+   ```
+
+   这会对 Series 对象中的每个值应用给定的函数，例如将每个值平方。
+
+需要注意的是，`apply()` 函数在处理大规模数据时效率可能不高，可以考虑使用其他 Pandas 提供的优化操作，例如向量化操作（如 `applymap()`、`map()`、`transform()`、`groupby()` 等）来替代循环应用函数。
 
 ```python
 df = pd.DataFrame(data=np.random.randint(0, 10, size=(5,3)),

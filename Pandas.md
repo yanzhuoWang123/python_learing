@@ -1606,7 +1606,7 @@ df
 
 df.sort_values('Python')  # 默认按照列名排序，默认升序
 df.sort_values('Python', ascending=False)    # 降序
-df.sort_values('鲁班', axis=1)  
+df.sort_values('鲁班', axis=1)  # axis = 1 按行进行升序排列
 
 # 按照行索引或列索引排序
 df.sort_index(ascending=True, axis=1)
@@ -1685,7 +1685,9 @@ df.median() # 中位数
 df.sum() # 求和
 df.mean(axis=1) # 每一行的平均值
 
-df[0].value_counts() # 统计元素出现次数
+df[0].value_counts() # 统计元素出现次数,默认统计列中元素出现次数
+df.apply(lambda row: row.value_counts(), axis=1) # 调用apply函数,通过定义临时函数lambda使value_counts()函数应用到每一行,axis=1 参数用于指定按行进行操作
+
 df.cumsum() # 累加
 df.cumprod() # 累乘
 

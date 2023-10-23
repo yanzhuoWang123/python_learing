@@ -794,3 +794,32 @@ print(bin_str)  # '1010'
 需要注意的是，使用 format() 函数时，可以通过设定格式指示符来指定输出的格式。例如，'b' 表示二进制，'d' 表示十进制，'o' 表示八进制，'x' 表示十六进制等等。
 ```
 
+#### 3,19 `tuple`函数
+
+```python
+元组的语法很简单，可以通过以下方式创建一个元组：
+
+my_tuple = (element1, element2, element3, ...)
+其中 element1、element2、element3 等是元组中的元素，它们可以是任意的数据类型（如整数、字符串、列表等）。
+
+另外，对于只包含一个元素的元组，在元素后面需要加上一个逗号 , 作为区分，以防止与括号内的表达式混淆。
+
+例如：
+empty_tuple = ()
+single_tuple = (1,)
+name_tuple = ("John", "Doe")
+mixed_tuple = (1, "apple", [3, 4], ("a", "b"))
+在创建元组后，您可以使用索引访问元组中的元素，索引从0开始。也可以使用切片操作获取元组的子集。
+
+my_tuple = (1, 2, 3)
+print(my_tuple[0])  # 输出：1
+print(my_tuple[1:])  # 输出：(2, 3)
+虽然元组不可变，但是可以进行一些基本操作，如连接（使用 + 运算符）和重复（使用 * 运算符）。
+
+tuple1 = (1, 2)
+tuple2 = ("a", "b")
+combined_tuple = tuple1 + tuple2  # 元组连接
+repeated_tuple = tuple1 * 3  # 元组重复
+这样，combined_tuple 将会是 (1, 2, "a", "b")，而 repeated_tuple 将会是 (1, 2, 1, 2, 1, 2)。
+```
+

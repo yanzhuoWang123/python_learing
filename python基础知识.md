@@ -158,6 +158,56 @@ print(x)
 
 ## 3、字典的创建及索引
 
+```python
+在 Python 中，字典是一种无序的数据结构，用于存储键-值对。字典使用花括号 {} 来定义，并使用冒号 : 分隔键和值。下面是字典的基本语法：
+
+my_dict = {key1: value1, key2: value2, key3: value3}
+在这个语法中，my_dict 是字典的名称，key1、key2、key3 是键，value1、value2、value3 是对应的值。每个键和值之间使用冒号 : 进行分隔，不同的键-值对之间使用逗号 , 进行分隔。
+
+以下是一个具体的例子：
+
+student_scores = {'Alice': 85, 'Bob': 92, 'Charlie': 78}
+在这个例子中，我们创建了一个名为 student_scores 的字典，其中包含三个学生的成绩信息。'Alice'、'Bob' 和 'Charlie' 是键，而 85、92 和 78 是对应的值。
+
+你可以使用方括号 [] 来访问字典中的值，提供相应的键作为索引。例如，student_scores['Alice'] 将返回 85。
+还可以使用 for 循环遍历字典的键或值，或者使用内置的方法来操作字典，如 keys()、values() 和 items()。
+
+当需要遍历字典的键或值时，可以使用 for 循环结合字典的内置方法进行操作。下面是对 keys()、values() 和 items() 方法的详细介绍：
+keys() 方法：该方法返回一个包含字典所有键的可迭代对象。可以将其用于遍历字典的键。
+student_scores = {'Alice': 85, 'Bob': 92, 'Charlie': 78}
+# 遍历字典的键
+for key in student_scores.keys():
+    print(key)
+输出结果：
+Alice
+Bob
+Charlie
+
+values() 方法：该方法返回一个包含字典所有值的可迭代对象。可以将其用于遍历字典的值。
+student_scores = {'Alice': 85, 'Bob': 92, 'Charlie': 78}
+# 遍历字典的值
+for value in student_scores.values():
+    print(value)
+输出结果：
+85
+92
+78
+
+items() 方法：该方法返回一个包含字典所有键值对的可迭代对象，每个键值对表示为一个元组。可以将其用于同时遍历字典的键和值。
+student_scores = {'Alice': 85, 'Bob': 92, 'Charlie': 78}
+# 遍历字典的键和值
+for key, value in student_scores.items():
+    print(key, value)
+输出结果：
+Alice 85
+Bob 92
+Charlie 78
+
+使用这些方法可以方便地遍历字典的键、值或键值对，并在循环中执行相应的操作。你还可以结合条件语句和其他逻辑来进一步处理字典中的数据。
+```
+
+
+
 ![image-20230903105922083](assets/image-20230903105922083.png)
 
 字典中的元素无先后顺序，通过键来访问值
@@ -809,7 +859,7 @@ empty_tuple = ()
 single_tuple = (1,)
 name_tuple = ("John", "Doe")
 mixed_tuple = (1, "apple", [3, 4], ("a", "b"))
-在创建元组后，您可以使用索引访问元组中的元素，索引从0开始。也可以使用切片操作获取元组的子集。
+在创建元组后，您可以使用索引访问元组中的元素，索引从0开始。也可以使用切片操作获取元组的子集。元组索引切片时为闭区间.
 
 my_tuple = (1, 2, 3)
 print(my_tuple[0])  # 输出：1

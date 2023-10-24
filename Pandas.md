@@ -4,39 +4,43 @@
 >
 > 版本：QF1.0
 >
-> 版权：千锋Python教研院
+> 版权：千锋 Python 教研院
 >
-> 公众号：Python专栏
+> 公众号：Python 专栏
 
 #### 强大的数据处理和分析工具
 
-####  一、Pandas课程介绍
+#### 一、Pandas 课程介绍
 
-- Pandas 是基于NumPy的一种工具，该工具是为解决数据分析任务而创建的, Pandas提供了大量能使我们快速便捷地处理数据的函数和方法。
+- Pandas 是基于 NumPy 的一种工具，该工具是为解决数据分析任务而创建的, Pandas 提供了大量能使我们快速便捷地处理数据的函数和方法。
 
-- Pandas与出色的 Jupyter工具包和其他库相结合，Python中用于进行数据分析的环境在性能、生产率和协作能力方面都是卓越的。
-- Pandas的主要数据结构是 **Series(**一维数据)与 **DataFrame **(二维数据)，这两种数据结构足以处理金融、统计、社会科学、工程等领域里的大多数案例
+- Pandas 与出色的 Jupyter 工具包和其他库相结合，Python 中用于进行数据分析的环境在性能、生产率和协作能力方面都是卓越的。
+
+- Pandas 的主要数据结构是 \*\*Series(\*\*一维数据)与 \*\*DataFrame \*\*(二维数据)，这两种数据结构足以处理金融、统计、社会科学、工程等领域里的大多数案例
+
 - 处理数据一般分为几个阶段：数据整理与清洗、数据分析与建模、数据可视化，Pandas 是处理数据的理想工具。
 
-#### 二、Pandas安装
+#### 二、Pandas 安装
 
-- Anaconda环境: 无需安装
-- 普通Python环境: pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
+- Anaconda 环境: 无需安装
 
-#### 三、Pandas数据结构
+- 普通 Python 环境: pip install pandas -i <https://pypi.tuna.tsinghua.edu.cn/simple>
+
+#### 三、Pandas 数据结构
 
 #### Series
 
-Series是一种类似于一维数组的对象，由下面两个部分组成：
+Series 是一种类似于一维数组的对象，由下面两个部分组成：
 
-- values：一组数据（ndarray类型）
+- values：一组数据（ndarray 类型）
+
 - index：相关的数据索引标签
 
-##### 1）Series的创建
+##### 1）Series 的创建
 
 两种创建方式：
 
-###### (1) 由列表或NumPy数组创建
+###### (1) 由列表或 NumPy 数组创建
 
 ```python
 list1 = [11, 22, 33, 44]
@@ -44,15 +48,15 @@ n = np.array(list1)
 # type(n)  # numpy.ndarray
 
 s = pd.Series(n)
-display(n, s, type(s))  
+display(n, s, type(s))
 # pandas.core.series.Series
 ```
 
-Series属性: index和values
+Series 属性: index 和 values
 
 ```python
 # values属性
-s.values 
+s.values
 # array([11, 22, 33, 44])
 
 s.index
@@ -100,14 +104,15 @@ s = Series([1,2,3], index=["张三", '李四', '王五'])
 display(s)
 ```
 
-##### 2）Series的索引
+##### 2）Series 的索引
 
-可以使用中括号取单个索引（此时返回的是元素类型），或者中括号里一个列表取多个索引（此时返回的仍然是一个Series类型）。分为显示索引和隐式索引：
+可以使用中括号取单个索引（此时返回的是元素类型），或者中括号里一个列表取多个索引（此时返回的仍然是一个 Series 类型）。分为显示索引和隐式索引：
 
 ###### (1) 显式索引：
 
- - 使用index中的元素作为索引值
- - 使用.loc[]
+- 使用 index 中的元素作为索引值
+
+- 使用.loc\[]
 
 注意，此时是闭区间
 
@@ -121,14 +126,15 @@ s[['语文']]  # Series类型
 
 # .loc[ ]
 s.loc['语文']
-s.loc[['语文', "Python", "数学"]] 
+s.loc[['语文', "Python", "数学"]]
 s.loc[['语文']]
 ```
 
 ###### (2) 隐式索引：
 
 - 使用整数作为索引值
-- 使用.iloc[]（推荐）
+
+- 使用.iloc\[]（推荐）
 
 注意，此时是半开区间
 
@@ -146,9 +152,9 @@ s.iloc[[0, 2, 1]]
 s.iloc[[0]]
 ```
 
-##### 3）Series的切片
+##### 3）Series 的切片
 
-- Series一维数组切片
+- Series 一维数组切片
 
 ```python
 s = Series({'语文': 150, "数学": 100, "英语": 120, "Python": 99, "Numpy": 66, "Pandas": 199})
@@ -164,14 +170,19 @@ s["数学": "Python"]
 s.loc["数学": "Python"]
 ```
 
-##### 4）Series的属性和方法
+##### 4）Series 的属性和方法
 
 - shape 形状
+
 - size 大小
+
 - index 索引
+
 - values 值
+
 - dtype 元素类型
-- name  Series名字
+
+- name Series 名字
 
 ```python
 s.shape  # 形状
@@ -186,17 +197,18 @@ s.name
 
 查看首尾数据
 
-- head()  查看前几条数据，默认5条
-- tail()  查看后几条数据，默认5 
+- head() 查看前几条数据，默认 5 条
+
+- tail() 查看后几条数据，默认 5
 
 ```python
 # 查看前几条数据，默认5条
-head() 
-s.head()  
+head()
+s.head()
 s.head(2)
 
 # 查看后几条数据，默认5
-tail() 
+tail()
 s.tail()
 s.tail(2)
 ```
@@ -204,8 +216,11 @@ s.tail(2)
 检测缺失数据
 
 - pd.isnull()
+
 - pd.notnull()
+
 - isnull()
+
 - notnull()
 
 ```python
@@ -221,9 +236,9 @@ pd.notnull(s)
 s[ pd.notnull(s) ]
 ```
 
-##### 5）Series的运算
+##### 5）Series 的运算
 
-###### (1) 适用于NumPy的数组运算也适用于Series
+###### (1) 适用于 NumPy 的数组运算也适用于 Series
 
 ```python
 s = Series(np.random.randint(10, 100, size=10))
@@ -236,11 +251,13 @@ s // 10
 s ** 2
 ```
 
-###### (2) Series之间的运算
+###### (2) Series 之间的运算
 
 - 在运算中自动对齐索引的数据
-- 如果索引不对应，则补NaN
-- Series没有广播机制 
+
+- 如果索引不对应，则补 NaN
+
+- Series 没有广播机制
 
 ```python
 s1 = Series(np.random.randint(10, 100, size=3))
@@ -253,7 +270,7 @@ n2 = np.array(np.random.randint(1, 10, size=(3, 1)))
 display(n1 + n2)
 ```
 
-- 注意：要想保留所有的index，则需要使用.add()函数
+- 注意：要想保留所有的 index，则需要使用.add()函数
 
 ```python
 s1.add(s2, fill_value=100)
@@ -261,19 +278,21 @@ s1.add(s2, fill_value=100)
 
 #### DataFrame
 
-DataFrame是一个【表格型】的数据结构，可以看做是【由Series组成的字典】（共用同一个索引）。DataFrame由按一定顺序排列的多列数据组成。设计初衷是将Series的使用场景从一维拓展到多维。DataFrame既有行索引，也有列索引。
+DataFrame 是一个【表格型】的数据结构，可以看做是【由 Series 组成的字典】（共用同一个索引）。DataFrame 由按一定顺序排列的多列数据组成。设计初衷是将 Series 的使用场景从一维拓展到多维。DataFrame 既有行索引，也有列索引。
 
 - 行索引：index
+
 - 列索引：columns
-- 值：values（numpy的二维数组）
 
-##### 1）DataFrame的创建
+- 值：values（numpy 的二维数组）
 
-最常用的方法是传递一个字典来创建。DataFrame以字典的键作为每一【列】的名称，以字典的值（一个数组）作为每一列。
+##### 1）DataFrame 的创建
 
-此外，DataFrame会自动加上每一行的索引（和Series一样）。
+最常用的方法是传递一个字典来创建。DataFrame 以字典的键作为每一【列】的名称，以字典的值（一个数组）作为每一列。
 
-同Series一样，若传入的列与字典的键不匹配，则相应的值为NaN
+此外，DataFrame 会自动加上每一行的索引（和 Series 一样）。
+
+同 Series 一样，若传入的列与字典的键不匹配，则相应的值为 NaN
 
 ```python
 d = {
@@ -284,13 +303,18 @@ d = {
 df = pd.DataFrame(d)
 ```
 
-###### DataFrame属性和方法
+###### DataFrame 属性和方法
 
 - values 值
+
 - columns 列索引
+
 - index 行索引
+
 - shape 形状
+
 - head() 查看前几行数据
+
 - tail() 查看后几行数据
 
 ```python
@@ -307,7 +331,7 @@ df.head(2)
 df.tail(2)
 ```
 
-创建DataFrame的其他方式
+创建 DataFrame 的其他方式
 
 ```python
 df = DataFrame(
@@ -318,14 +342,15 @@ df = DataFrame(
 df
 ```
 
-##### 2）DataFrame的索引
+##### 2）DataFrame 的索引
 
 ###### (1) 对列进行索引
 
 - 通过类似字典的方式
+
 - 通过属性的方式
 
-可以将DataFrame的列获取为一个Series。返回的Series拥有原DataFrame相同的索引，且name属性也已经设置好了，就是相应的列名。
+可以将 DataFrame 的列获取为一个 Series。返回的 Series 拥有原 DataFrame 相同的索引，且 name 属性也已经设置好了，就是相应的列名。
 
 ```python
 df = DataFrame(
@@ -343,11 +368,13 @@ df[['语文']]
 
 ###### (2) 对行进行索引
 
-- 使用.loc[ ]加index来进行行索引
-- 使用.iloc[ ]加整数来进行行索引
-- 如果是先对列进行索引则不需要加.loc或.iloc
+- 使用.loc\[ ]加 index 来进行行索引
 
-同样返回一个Series，index为原来的columns。
+- 使用.iloc\[ ]加整数来进行行索引
+
+- 如果是先对列进行索引则不需要加.loc 或.iloc
+
+同样返回一个 Series，index 为原来的 columns。
 
 ```python
 df = DataFrame(
@@ -361,7 +388,7 @@ df.loc['小明']  # Series
 df.iloc[0]
 
 df.loc[['小明', '小绿']]  # DataFrame
-df.loc[['小明']] 
+df.loc[['小明']]
 df.iloc[[0, 2]]  # DataFrame
 df.iloc[[0]]
 ```
@@ -369,8 +396,10 @@ df.iloc[[0]]
 ###### (3) 对元素索引的方法
 
 - 使用列索引
-- 使用行索引(iloc[3,1]相当于两个参数;iloc[[3,3]] 里面的[3,3]看做一个参数)
-- 使用values属性（二维numpy数组）
+
+- 使用行索引(iloc\[3,1]相当于两个参数;iloc\[\[3,3]] 里面的\[3,3]看做一个参数)
+
+- 使用 values 属性（二维 numpy 数组）
 
 ```python
 df = DataFrame(
@@ -385,14 +414,15 @@ df['语文']['小明']
 
 # 先取行，再取列
 df.iloc[1]['语文']
-# df.loc['小明', '语文']  
+# df.loc['小明', '语文']
 ```
 
-##### 3）DataFrame的切片
+##### 3）DataFrame 的切片
 
 【注意】 直接用中括号时：
 
 - 索引表示的是列索引
+
 - 切片表示的是行切片
 
 ```python
@@ -423,20 +453,22 @@ df.loc["小明":"小绿", "数学":"Python"]
 df.iloc[:3, 1:4]
 ```
 
-##### 4）DataFrame的运算
+##### 4）DataFrame 的运算
 
-###### （1） DataFrame之间的运算
+###### （1） DataFrame 之间的运算
 
-- 在运算中自动对齐索引的数据 
-- 如果索引不对应，则补NaN
-- DataFrame没有广播机制 
+- 在运算中自动对齐索引的数据
+
+- 如果索引不对应，则补 NaN
+
+- DataFrame 没有广播机制
 
 ```python
 # 创建DataFrame df1 不同人员的各科目成绩，月考一
 df1 = DataFrame(
     data={
-      'Python': [100, 90, 80], 
-      'Java': [80, 70, 60], 
+      'Python': [100, 90, 80],
+      'Java': [80, 70, 60],
       'PHP': [60, 50, 40]
     },
     index=['张飞', "吕布", '关羽']
@@ -445,9 +477,9 @@ df1 = DataFrame(
 # 创建DataFrame df2 不同人员的各科目成绩，月考二
 df2 = DataFrame(
     data={
-      'Python': [100, 90, 80, 70], 
-      'Java': [80, 70, 60, 50], 
-      'PHP': [60, 50, 40, 30], 
+      'Python': [100, 90, 80, 70],
+      'Java': [80, 70, 60, 50],
+      'PHP': [60, 50, 40, 30],
       'Go': [40, 30, 20, 10]
     },
     index=['张飞', "吕布", '关羽', "刘备"]
@@ -463,21 +495,20 @@ display(df1 + df2)
 df1.add(df2, fill_value=1000)
 ```
 
-###### （2）Series与DataFrame之间的运算
+###### （2）Series 与 DataFrame 之间的运算
 
-- 使用Python操作符：以行为单位操作（参数必须是行），对所有行都有效。（类似于numpy中二维数组与一维数组的运算，但可能出现NaN）
+- 使用 Python 操作符：以行为单位操作（参数必须是行），对所有行都有效。（类似于 numpy 中二维数组与一维数组的运算，但可能出现 NaN）
 
-- 使用pandas操作函数：
+- 使用 pandas 操作函数：
 
-    axis=0：以列为单位操作（参数必须是列），对所有列都有效。
-    axis=1：以行为单位操作（参数必须是行），对所有行都有效。
+  axis\=0：以列为单位操作（参数必须是列），对所有列都有效。 axis\=1：以行为单位操作（参数必须是行），对所有行都有效。
 
 ```python
 # 创建DataFrame df1 不同人员的各科目成绩，月考一
 df1 = DataFrame(
     data={
-      'Python': [100, 90, 80], 
-      'Java': [80, 70, 60], 
+      'Python': [100, 90, 80],
+      'Java': [80, 70, 60],
       'PHP': [60, 50, 40]
     },
     index=['张飞', "吕布", '关羽']
@@ -498,15 +529,13 @@ df1.add(s, axis='index')  # 行
 df1.add(s, axis=0)  # 行
 ```
 
-
-
-#### 四、Pandas层次化索引
+#### 四、Pandas 层次化索引
 
 ##### 1. 创建多层行索引
 
 ###### 1) 隐式构造
 
-- 最常见的方法是给DataFrame构造函数的index参数传递两个或更多的数组
+- 最常见的方法是给 DataFrame 构造函数的 index 参数传递两个或更多的数组
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
@@ -525,7 +554,7 @@ df = pd.DataFrame(data=data, index=index, columns=columns)
 df
 ```
 
-- Series也可以创建多层索引
+- Series 也可以创建多层索引
 
 ```python
 data = np.random.randint(0, 100, size=6)
@@ -539,7 +568,7 @@ s  = pd.Series(data=data, index=index)
 s
 ```
 
-###### 2) 显示构造pd.MultiIndex
+###### 2) 显示构造 pd.MultiIndex
 
 - 使用数组
 
@@ -560,15 +589,15 @@ df = pd.DataFrame(data=data, index=index, columns=columns)
 df
 ```
 
-- 使用tuple
+- 使用 tuple
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
 
-index = pd.MultiIndex.from_tuples( 
+index = pd.MultiIndex.from_tuples(
     (
-        ('1班', '张三'), ('1班', '李四'), ('1班', '王五'), 
-        ('2班', '赵六'), ('2班', '田七'), ('2班', '孙八'), 
+        ('1班', '张三'), ('1班', '李四'), ('1班', '王五'),
+        ('2班', '赵六'), ('2班', '田七'), ('2班', '孙八'),
     )
 )
 
@@ -581,13 +610,13 @@ df = pd.DataFrame(data=data, index=index, columns=columns)
 df
 ```
 
-- 使用product 
+- 使用 product
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
 
 # 笛卡尔积：{a, b} {c, d} => {a,c}, {a,d}, {b,c}, {b,d}
-index = pd.MultiIndex.from_product( 
+index = pd.MultiIndex.from_product(
     [
         ['1班',  '2班'],
         ['张三', '李四', '王五']
@@ -613,13 +642,13 @@ df
 
 ##### 2. 创建多层列索引(同行索引)
 
-除了行索引index，列索引columns也能用同样的方法创建多层索引
+除了行索引 index，列索引 columns 也能用同样的方法创建多层索引
 
 ##### 3. 多层索引对象的索引与切片操作
 
-###### 1）Series的操作
+###### 1）Series 的操作
 
-【重要】对于Series来说，直接中括号[]与使用.loc()完全一样
+【重要】对于 Series 来说，直接中括号\[]与使用.loc()完全一样
 
 ```python
 # (1) 索引
@@ -663,16 +692,18 @@ s[1: 4]
 s.iloc[1: 5]
 ```
 
-###### 2）DataFrame的操作
+###### 2）DataFrame 的操作
 
 - 可以直接使用列名称来进行列索引
-- 使用行索引需要用iloc()，loc()等函数 
+
+- 使用行索引需要用 iloc()，loc()等函数
+
 - 无法直接对二级索引进行索引
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
 
-index = pd.MultiIndex.from_product( 
+index = pd.MultiIndex.from_product(
     [
         ['1班',  '2班'],
         ['张三', '李四', '王五']
@@ -712,7 +743,7 @@ df.iloc[[1]]
 df.iloc[[1,2,3]]
 
 # 切片
-# 行切片                         #加.loc就先取行,.loc括号里写索引值,.iloc括号里写数值                               
+# 行切片                         #加.loc就先取行,.loc括号里写索引值,.iloc括号里写数值
 df.iloc[1:5]
 df.loc['1班' : '2班']
 df.loc[('1班', '李四') : ('2班', '李四')]
@@ -727,13 +758,14 @@ df.loc[:, ('期中', '数学'): ('期末', '数学')]  # 报错,行切片可以�
 ##### 4. 索引的堆叠（stack）
 
 - stack()
+
 - unstack()
 
-【小技巧】使用stack()的时候，level等于哪一个，哪一个就消失，出现在行里。
+【小技巧】使用 stack()的时候，level 等于哪一个，哪一个就消失，出现在行里。
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
-index = pd.MultiIndex.from_product( 
+index = pd.MultiIndex.from_product(
     [
         ['1班',  '2班'],
         ['张三', '李四', '王五']
@@ -747,12 +779,12 @@ df = pd.DataFrame(data=data, index=index, columns=columns)
 
 # stack: 列索引变成行索引
 df.stack()  # 默认level=-1 (倒数第一层)，将最里层的列索引 变成行索引
-df.stack(level=1) 
+df.stack(level=1)
 
 df.stack(level=0)  # 将最外层的列索引 变成行索引
 ```
 
-【小技巧】使用unstack()的时候，level等于哪一个，哪一个就消失，出现在列里。
+【小技巧】使用 unstack()的时候，level 等于哪一个，哪一个就消失，出现在列里。
 
 ```python
 # unstack : 将行索引 变成 列索引
@@ -762,14 +794,14 @@ df.unstack(level=1)
 df.unstack(level=0)
 ```
 
-使用fill_value填充
+使用 fill_value 填充
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
-index = pd.MultiIndex.from_tuples( 
+index = pd.MultiIndex.from_tuples(
     (
-        ('1班', '张三'), ('1班', '李四'), ('1班', '王五'), 
-        ('2班', '赵六'), ('2班', '田七'), ('2班', '孙八'), 
+        ('1班', '张三'), ('1班', '李四'), ('1班', '王五'),
+        ('2班', '赵六'), ('2班', '田七'), ('2班', '孙八'),
     )
 )
 columns = [
@@ -786,15 +818,16 @@ df2.unstack(fill_value=0)
 
 【注意】
 
-- 需要指定axis
-- 【小技巧】和unstack()相反，聚合的时候，axis等于哪一个，哪一个就保留。
+- 需要指定 axis
+
+- 【小技巧】和 unstack()相反，聚合的时候，axis 等于哪一个，哪一个就保留。
 
 ```python
 data = np.random.randint(0, 100, size=(6, 6))
-index = pd.MultiIndex.from_tuples( 
+index = pd.MultiIndex.from_tuples(
     (
-        ('1班', '张三'), ('1班', '李四'), ('1班', '王五'), 
-        ('2班', '赵六'), ('2班', '田七'), ('2班', '孙八'), 
+        ('1班', '张三'), ('1班', '李四'), ('1班', '王五'),
+        ('2班', '赵六'), ('2班', '田七'), ('2班', '孙八'),
     )
 )
 columns = [
@@ -834,27 +867,29 @@ df.groupby(level=1).sum()
 这样就可以避免这个警告了，并且你的代码将在未来版本的Pandas中保持兼容性。
 ```
 
-#### 五、Pandas数据合并
+#### 五、Pandas 数据合并
 
 - pd.concat
-- pd.append
-- pd.merge 
 
-为了方便，我们首先定义一个生成DataFrame的函数：
+- pd.append
+
+- pd.merge
+
+为了方便，我们首先定义一个生成 DataFrame 的函数：
 
 ```python
-def make_df(indexs, columns):    
+def make_df(indexs, columns):
     data = [[str(j)+str(i) for j in columns] for i in indexs]
     df = pd.DataFrame(data=data, index=indexs, columns=columns)
     return df
-  
+
 # 调用
 # make_df([1, 2, 3, 4], list('ABCD'))
 ```
 
-##### 1. 使用pd.concat()级联
+##### 1. 使用 pd.concat()级联
 
-Pandas使用pd.concat函数，与NumPy中的concatenate函数类似，只是多了一些参数：
+Pandas 使用 pd.concat 函数，与 NumPy 中的 concatenate 函数类似，只是多了一些参数：
 
 ###### 1) 简单级联
 
@@ -864,17 +899,17 @@ df2 = make_df([3, 4], ['A', 'B'])
 display(df1, df2)
 
 # 上下合并，垂直合并
-pd.concat([df1, df2])  
+pd.concat([df1, df2])
 
 # 左右合并，水平合并
-pd.concat([df1, df2], axis=1) 
+pd.concat([df1, df2], axis=1)
 
 # 忽略行索引，重置行索引
-pd.concat([df1, df2], ignore_index=True)  
+pd.concat([df1, df2], ignore_index=True)
 
 # 使用多层索引 keys
-pd.concat([df1, df2], keys=['x', 'y'])    
-# pd.concat([df1, df2], keys=['x', 'y'], axis=1)    
+pd.concat([df1, df2], keys=['x', 'y'])
+# pd.concat([df1, df2], keys=['x', 'y'], axis=1)
 ```
 
 ###### 2) 不匹配级联
@@ -897,9 +932,9 @@ pd.concat([df3, df4], join='outer')
 pd.concat([df3, df4], join='inner')
 ```
 
-##### 2. 使用append()函数添加
+##### 2. 使用 append()函数添加
 
-由于在后面级联的使用非常普遍，因此有一个函数append专门用于在后面添加
+由于在后面级联的使用非常普遍，因此有一个函数 append 专门用于在后面添加
 
 ```python
 df3 = make_df([1, 2, 3, 4], ['A', 'B', 'C', 'D'])
@@ -909,11 +944,14 @@ display(df3, df4)
 df3.append(df4, sort=True)
 ```
 
-##### 3.使用merge()合并
+##### 3.使用 merge()合并
 
-- 类似MySQL中表和表之间的合并 
-- merge与concat的区别在于，merge需要依据某一共同的行或列来进行合并
-- 使用pd.merge()合并时，会自动根据两者相同column名称的那一列，作为key来进行合并。
+- 类似 MySQL 中表和表之间的合并
+
+- merge 与 concat 的区别在于，merge 需要依据某一共同的行或列来进行合并
+
+- 使用 pd.merge()合并时，会自动根据两者相同 column 名称的那一列，作为 key 来进行合并。
+
 - 每一列元素的顺序不要求一致
 
 ###### 1) 一对一合并
@@ -974,9 +1012,9 @@ display(df1, df2)
 df1.merge(df2)           #看两个df对象共同的column去进行匹配上
 ```
 
-###### 4) key的规范化
+###### 4) key 的规范化
 
-- 使用on=显式指定哪一列为key,当有多个key相同时使用
+- 使用 on\=显式指定哪一列为 key,当有多个 key 相同时使用
 
 ```python
 df1 = pd.DataFrame({
@@ -996,14 +1034,14 @@ df1.merge(df2, on='id')
 df1.merge(df2, on='name')
 ```
 
-- 使用left_on和right_on指定左右两边的列作为key，当左右两边的key都不相等时使用
+- 使用 left_on 和 right_on 指定左右两边的列作为 key，当左右两边的 key 都不相等时使用
 
 ```python
 # 如果没有相同的列名，则需要使用left_on和right_on来分别指定2个表的列作为连接的字段
 df1.merge(df2, left_on='id', right_on='id2')
 ```
 
-- 当左边的列和右边的index相同的时候,使用right_index=True
+- 当左边的列和右边的 index 相同的时候,使用 right_index\=True
 
 ```python
 df1.merge(df2, left_index=True, right_on='id2')
@@ -1011,7 +1049,7 @@ df1.merge(df2, left_index=True, right_on='id2')
 
 ###### 5) 内合并与外合并
 
-- 内合并：只保留两者都有的key（默认模式）
+- 内合并：只保留两者都有的 key（默认模式）
 
 ```python
 df1 = pd.DataFrame({
@@ -1031,27 +1069,28 @@ df1.merge(df2)
 df1.merge(df2, how='inner')
 ```
 
-- 外合并 how='outer'：补NaN
+- 外合并 how\='outer'：补 NaN
 
 ```python
-# 外连接: 
+# 外连接:
 df1.merge(df2, how='outer')
 ```
 
-- 左合并、右合并：how='left'，how='right'
+- 左合并、右合并：how\='left'，how\='right'
 
 ```python
-# 左连接: 
+# 左连接:
 df1.merge(df2, how='left')
 
-# 右连接: 
+# 右连接:
 df1.merge(df2, how='right')
 ```
 
 ###### 6) 添加后缀
 
-- 当列冲突时，即有多个列名称相同时，需要使用on=来指定哪一个列作为key，配合suffixes指定冲突列名
-- 可以使用suffixes=自己指定后缀
+- 当列冲突时，即有多个列名称相同时，需要使用 on\=来指定哪一个列作为 key，配合 suffixes 指定冲突列名
+
+- 可以使用 suffixes\=自己指定后缀
 
 ```python
 df1 = pd.DataFrame({
@@ -1069,30 +1108,33 @@ display(df1, df2)
 df1.merge(df2, on='id', suffixes=['_表1', '_表2'])
 ```
 
-###### merge合并总结:
+###### merge 合并总结:
 
 - 合并有三种现象: 一对一, 多对一, 多对多.
-- 合并默认会找相同的列名进行合并, 如果有多个列名相同,用on来指定. 
-- 如果没有列名相同,但是数据又相同,可以通过left_on, right_on来分别指定要合并的列.
-- 如果想和index合并, 使用left_index, right_index来指定.
-- 如果多个列相同,合并之后可以通过suffixes来区分.
-- 还可以通过how来控制合并的结果, 默认是内合并, 还有外合并outer, 左合并left, 右合并right.
 
+- 合并默认会找相同的列名进行合并, 如果有多个列名相同,用 on 来指定.
 
+- 如果没有列名相同,但是数据又相同,可以通过 left_on, right_on 来分别指定要合并的列.
 
-#### 六、Pandas缺失值处理
+- 如果想和 index 合并, 使用 left_index, right_index 来指定.
+
+- 如果多个列相同,合并之后可以通过 suffixes 来区分.
+
+- 还可以通过 how 来控制合并的结果, 默认是内合并, 还有外合并 outer, 左合并 left, 右合并 right.
+
+#### 六、Pandas 缺失值处理
 
 有两种缺失值(空值)：
 
 - None
+
 - np.nan
 
 ##### 1. None
 
-- None是Python自带的，是Python中的空对象。None不能参与到任何计算中。
+- None 是 Python 自带的，是 Python 中的空对象。None 不能参与到任何计算中。
 
-- object类型的运算要比int类型的运算慢得多 
-
+- object 类型的运算要比 int 类型的运算慢得多
 
 ```python
 # 计算不同数据类型求和时间
@@ -1105,14 +1147,14 @@ df1.merge(df2, on='id', suffixes=['_表1', '_表2'])
 
 ##### 2. np.nan（NaN）
 
-- np.nan是浮点类型，能参与到计算中。但计算的结果总是NaN。
+- np.nan 是浮点类型，能参与到计算中。但计算的结果总是 NaN。
 
 ```python
 type(np.nan)
 # float
 ```
 
-- 但可以使用np.nan*()函数来计算nan，此时会过滤掉nan。
+- 但可以使用 np.nan\*()函数来计算 nan，此时会过滤掉 nan。
 
 ```python
 n = np.array([1, 2, 3, np.nan, 5, 6])
@@ -1123,11 +1165,11 @@ np.nansum(n)
 np.nan + 10
 ```
 
-##### 3. pandas中的None与NaN
+##### 3. pandas 中的 None 与 NaN
 
-###### 1) pandas中None与np.nan都视作np.nan
+###### 1) pandas 中 None 与 np.nan 都视作 np.nan
 
-- 创建DataFrame
+- 创建 DataFrame
 
 ```python
 data = np.random.randint(0 ,100, size=(5, 5))
@@ -1143,18 +1185,24 @@ df.loc[2, 'B']  # nan
 df.loc[3, 'C']  # nan
 ```
 
-###### 2) pandas中None与np.nan的操作
+###### 2) pandas 中 None 与 np.nan 的操作
 
 - isnull()
+
 - notnull()
+
 - all()
+
 - any()
-- dropna():  过滤丢失数据
-- fillna():  填充丢失数据
+
+- dropna(): 过滤丢失数据
+
+- fillna(): 填充丢失数据
 
 (1)判断函数
 
 - isnull()
+
 - notnull()
 
 ```python
@@ -1177,7 +1225,7 @@ df.isnull().any(axis=1)  # axis=1 表式列，判断一行中的每一列数据�
 df.notnull().all(axis=1)
 ```
 
-- 使用bool值索引过滤数据
+- 使用 bool 值索引过滤数据
 
 ```python
 # 行过滤
@@ -1212,14 +1260,14 @@ df.dropna()  # 默认是删除有空的行
 df.dropna(axis=1)  # 删除有空的列
 ```
 
-也可以选择过滤的方式 how = 'all'
+也可以选择过滤的方式 how \= 'all'
 
 ```python
 df.dropna(how='any')  # 默认值，默认有空就会删除
 df.dropna(how='all', axis=1)  # 所有的值都为空（整行或整列为空），才删除
 ```
 
-inplace=True 修改原数据
+inplace\=True 修改原数据
 
 ```python
 df2 = df.copy()
@@ -1262,23 +1310,22 @@ df.fillna(method='ffill', axis=1)  # 用左边数据来填充自己
 df.fillna(method='bfill', axis=1)  # 用右边数据来填充自己
 ```
 
-
-
-#### 七、Pandas处理重复值和异常值
+#### 七、Pandas 处理重复值和异常值
 
 ```python
-def make_df(indexs, columns):    
+def make_df(indexs, columns):
     data = [[str(j)+str(i) for j in columns] for i in indexs]
     df = pd.DataFrame(data=data, index=indexs, columns=columns)
     return df
-  
+
 # make_df([1, 2, 3, 4], ['A', 'B', 'C', 'D'])
 ```
 
 ##### 1. 删除重复行
 
-- 使用duplicated()函数检测重复的行，返回元素为布尔类型的Series对象
-- 每个元素对应一行，如果该行不是第一次出现，则元素为True
+- 使用 duplicated()函数检测重复的行，返回元素为布尔类型的 Series 对象
+
+- 每个元素对应一行，如果该行不是第一次出现，则元素为 True
 
 ```python
 # 让第一行和第二行重复
@@ -1296,7 +1343,7 @@ df.loc[1, 'D'] = 'DDD'
 df.duplicated(subset=['A', 'B', 'C'])
 ```
 
-使用drop_duplicates()函数删除重复的行
+使用 drop_duplicates()函数删除重复的行
 
 ```python
 df.drop_duplicates(subset=['A', 'B', 'C'])
@@ -1305,17 +1352,19 @@ df.drop_duplicates(subset=['A', 'B', 'C'], keep='last')
 
 ##### 2. 映射
 
-映射的含义：创建一个映射关系列表，把values元素和一个特定的标签或者字符串绑定
+映射的含义：创建一个映射关系列表，把 values 元素和一个特定的标签或者字符串绑定
 
 包含三种操作：
 
 - replace()函数：替换元素
+
 - map()函数：处理某一单独的列, 最重要
+
 - rename()函数：替换索引
 
 ###### 1) replace()函数：替换元素
 
-使用replace()函数，对values进行替换操作
+使用 replace()函数，对 values 进行替换操作
 
 ```python
 index = ['鲁班', '张三丰', '张无忌', '杜甫', '李白']
@@ -1430,6 +1479,7 @@ df3.rename(columns={'Python': 'PYTHON'})  # 更改列索引
 ```
 
 ###### 4) apply()函数：既支持 Series，也支持 DataFrame
+
 在 Pandas 中，`apply()` 函数用于对 DataFrame 或 Series 进行元素级别的操作。它可以接受一个函数作为参数，并将其应用到每个元素上，返回一个新的 Series 或 DataFrame。
 
 `apply()` 函数的语法如下：
@@ -1449,34 +1499,36 @@ series.apply(func, convert_dtype=True, args=(), **kwds)
 常用参数说明：
 
 - `func`：函数或可调用对象，用于对每个元素进行操作。
+
 - `axis`：指定应用函数的轴，默认为 0（每列），可以设置为 1（每行）。
+
 - `args`：额外的参数，传递给函数。
 
 下面是一些使用 `apply()` 函数的示例：
 
-1. 对 DataFrame 的每列应用函数：
+1.  对 DataFrame 的每列应用函数：
 
 ```python
  df.apply(lambda x: x.max() - x.min())
 ```
 
-   这会对每列数据应用 `lambda` 函数，计算每列的最大值与最小值的差值。
+这会对每列数据应用 `lambda` 函数，计算每列的最大值与最小值的差值。
 
-2. 对 DataFrame 的每行应用函数：
+1.  对 DataFrame 的每行应用函数：
 
-   ```python
-   df.apply(lambda x: x['A'] + x['B'], axis=1)
-   ```
+    ```python
+    df.apply(lambda x: x['A'] + x['B'], axis=1)
+    ```
 
-   这会对每行数据应用 `lambda` 函数，计算每行的 'A' 列与 'B' 列的和。
+    这会对每行数据应用 `lambda` 函数，计算每行的 'A' 列与 'B' 列的和。
 
-3. 对 Series 应用函数：
+2.  对 Series 应用函数：
 
-   ```python
-   Codeseries.apply(lambda x: x**2)
-   ```
+    ```python
+    Codeseries.apply(lambda x: x**2)
+    ```
 
-   这会对 Series 对象中的每个值应用给定的函数，例如将每个值平方。
+    这会对 Series 对象中的每个值应用给定的函数，例如将每个值平方。
 
 需要注意的是，`apply()` 函数在处理大规模数据时效率可能不高，可以考虑使用其他 Pandas 提供的优化操作，例如向量化操作（如 `applymap()`、`map()`、`transform()`、`groupby()` 等）来替代循环应用函数。
 
@@ -1486,14 +1538,14 @@ df = pd.DataFrame(data=np.random.randint(0, 10, size=(5,3)),
                   columns=['Python', 'NumPy', 'Pandas'])
 
 # 用于Series，其中x是Series中元素
-df['Python'].apply(lambda x:True if x >5 else False) 
+df['Python'].apply(lambda x:True if x >5 else False)
 
 # 用于DataFrame，其中的x是DataFrame中列或者行，是Series
 df.apply(lambda x : x.median(), axis=0)  # 列的中位数
 df.apply(lambda x : x.median(), axis=1)  # 行的中位数
 
 # 自定义方法
-def convert(x): 
+def convert(x):
     return (np.round(x.mean(), 1), x.count())
 df.apply(convert, axis=1)  # 行平均值，计数
 
@@ -1507,7 +1559,7 @@ df.applymap(lambda x : x + 100) # 计算DataFrame中每个元素
 df = pd.DataFrame(data=np.random.randint(0, 10, size=(10,3)),
                   index=list('ABCDEFHIJK'),
                   columns=['Python', 'NumPy', 'Pandas'])
-                  
+
 # 1、一列执行多项计算
 df['Python'].transform([np.sqrt, np.exp]) # Series处理
 
@@ -1519,7 +1571,7 @@ def convert(x):
         x *= -10
     return x
 
-df.transform({'Python':convert,'NumPy':np.max,'Pandas':np.min}) 
+df.transform({'Python':convert,'NumPy':np.max,'Pandas':np.min})
 ```
 
 ##### 3. 异常值检测和过滤
@@ -1533,13 +1585,13 @@ df.describe([0.3, 0.4, 0.5, 0.9, 0.99])  # 指定百分位数
 df.describe([0.3, 0.4, 0.5, 0.9, 0.99]).T  # 转置，行和列转换，在列比较多的情况下使用
 ```
 
-- df.std() : 可以求得DataFrame对象每一列的标准差
+- df.std() : 可以求得 DataFrame 对象每一列的标准差
 
 ```python
 df.std()
 ```
 
-- df.drop(): 删除特定索引 
+- df.drop(): 删除特定索引
 
 ```python
 df4 = df.copy()
@@ -1571,7 +1623,7 @@ df['Python'].unique()
 - query() : 按条件查询
 
 ```python
-# ==, >, <, 
+# ==, >, <,
 # in
 # and &
 # or  |
@@ -1620,9 +1672,9 @@ df.info()
 
 练习:
 
-新建一个形状为10000*3的标准正态分布的DataFrame，去除掉所有满足以下情况的行：
+新建一个形状为 10000\*3 的标准正态分布的 DataFrame，去除掉所有满足以下情况的行：
 
-- 其中任一元素绝对值大于3倍标准差
+- 其中任一元素绝对值大于 3 倍标准差
 
 ```python
 df = pd.DataFrame(np.random.randn(10000, 3))
@@ -1650,7 +1702,7 @@ df.loc[~cond2]
 
 - 使用.take()函数排序
 
-- 可以借助np.random.permutation()函数随机排序
+- 可以借助 np.random.permutation()函数随机排序
 
 ```python
 # 使用前面的df2
@@ -1669,9 +1721,7 @@ np.random.randint(0, 10, size=10)
 df2.take(np.random.randint(0, 5, size=5))
 ```
 
-
-
-#### 八、Pandas数学函数
+#### 八、Pandas 数学函数
 
 - 聚合函数
 
@@ -1699,30 +1749,16 @@ df.std() # 标准差
 ```
 
 - 其他数学函数
-  - 协方差
-        - 两组数值中每对变量的偏差乘积的平均值 
-        - 协方差>0 : 表式两组变量正相关
-             - 如果两个变量的变化趋势一致，也就是说如果其中一个大于自身的期望值时另外一个也大于自身的期望值，那么两个变量之间的协方差就是正值；
-        - 协方差<0 : 表式两组变量负相关
-            - 如果两个变量的变化趋势相反，即其中一个变量大于自身的期望值时另外一个却小于自身的期望值，那么两个变量之间的协方差就是负值。
-        - 协方差=0 : 表式两组变量不相关
-     - 相关系数
-           - 相关系数r = X与Y的协方差 / (X的标准差 * Y的标准差)
-           - 相关系数值的范围在-1和+1之间
-           - r＞0为正相关，r＜0为负相关。r＝0表示不相关
-           - r 的绝对值越大，相关程度越高
-           - 两个变量之间的相关程度，一般划分为四级：
-               - 如两者呈正相关，r呈正值，r=1时为完全正相关；
-               - 如两者呈负相关则r呈负值，而r=-1时为完全负相关，完全正相关或负相关时，所有图点都在直线回归线上；点分布在直线回归线上下越离散，r的绝对值越小。
-               - 相关系数的绝对值越接近1，相关越密切；越接近于0，相关越不密切。
-               - 当r=0时，说明X和Y两个变量之间无直线关系。
-               - 通常｜r｜大于0.8时，认为两个变量有很强的线性相关性。
+
+  - 协方差 - 两组数值中每对变量的偏差乘积的平均值 - 协方差>0 : 表式两组变量正相关 - 如果两个变量的变化趋势一致，也就是说如果其中一个大于自身的期望值时另外一个也大于自身的期望值，那么两个变量之间的协方差就是正值； - 协方差<0 : 表式两组变量负相关 - 如果两个变量的变化趋势相反，即其中一个变量大于自身的期望值时另外一个却小于自身的期望值，那么两个变量之间的协方差就是负值。 - 协方差\=0 : 表式两组变量不相关
+
+    - 相关系数 - 相关系数 r \= X 与 Y 的协方差 / (X 的标准差 \* Y 的标准差) - 相关系数值的范围在-1 和+1 之间 - r ＞ 0 为正相关，r ＜ 0 为负相关。r ＝ 0 表示不相关 - r 的绝对值越大，相关程度越高 - 两个变量之间的相关程度，一般划分为四级： - 如两者呈正相关，r 呈正值，r\=1 时为完全正相关； - 如两者呈负相关则 r 呈负值，而 r\=-1 时为完全负相关，完全正相关或负相关时，所有图点都在直线回归线上；点分布在直线回归线上下越离散，r 的绝对值越小。 - 相关系数的绝对值越接近 1，相关越密切；越接近于 0，相关越不密切。 - 当 r\=0 时，说明 X 和 Y 两个变量之间无直线关系。 - 通常｜ r ｜大于 0.8 时，认为两个变量有很强的线性相关性。
 
 ```python
 # 协方差
 #   两组数值中每对变量的偏差乘积的平均值
 
-df.cov() 
+df.cov()
 df[0].cov(df[1])  # 第0列 和 第1列的协方差
 
 # 相关系数 = X与Y的协方差 / (X的标准差 * Y的标准差)
@@ -1734,8 +1770,6 @@ df.corrwith(df[2]) # 单一属性相关性系数
 
 相关性系数：$r(X,Y) = \frac{Cov(X,Y)}{\sqrt{Var[X]*Var[Y]}}$
 
-
-
 #### 九、 数据分组聚合
 
 数据聚合是数据处理的最后一步，通常是要使每一个数组生成一个单一的数值。
@@ -1745,7 +1779,9 @@ df.corrwith(df[2]) # 单一属性相关性系数
 数据聚合处理：
 
 - 分组：先把数据分为几组
+
 - 用函数处理：为不同组的数据应用不同的函数以转换数据
+
 - 合并：把不同组得到的结果合并起来
 
 数据分类处理的核心： groupby()函数
@@ -1781,10 +1817,13 @@ df.groupby(by='color').sum()
 
 - 价格(price)
 
-1. 要求以属性作为列索引，新建一个ddd
-2. 对ddd进行聚合操作，求出颜色为白色的价格总和
-3. 对ddd进行聚合操作，求出萝卜的所有重量以及平均价格
-4. 使用merge合并总重量及平均价格
+1.  要求以属性作为列索引，新建一个 ddd
+
+2.  对 ddd 进行聚合操作，求出颜色为白色的价格总和
+
+3.  对 ddd 进行聚合操作，求出萝卜的所有重量以及平均价格
+
+4.  使用 merge 合并总重量及平均价格
 
 ```python
 ddd = pd.DataFrame(
@@ -1811,11 +1850,9 @@ df2= ddd.groupby('item')[['price']].mean()
 df1.merge(df2, left_index=True, right_index=True)
 ```
 
+#### 十、Pandas 加载数据
 
-
-#### 十、Pandas加载数据
-
-##### csv数据
+##### csv 数据
 
 ```python
 data = np.random.randint(0,50,size=(10,5))
@@ -1827,8 +1864,8 @@ df.to_csv('data.csv',
           sep=',',  # 文本分隔符，默认是逗号
           header=True, # 是否保存列索引
           # 是否保存行索引，保存行索引，文件被加载时，默认行索引会作为一列
-          index=True)  
-         
+          index=True)
+
 # 加载csv数据
 pd.read_csv('data.csv',
             sep=',', # 默认是逗号
@@ -1839,10 +1876,10 @@ pd.read_table('data.csv', # 和read_csv类似，读取限定分隔符的文本�
             sep=',',
             header=[0], # 指定列索引
             index_col=0  # 指定行索引
-             ) 
+             )
 ```
 
-##### excel数据
+##### excel 数据
 
 ```python
 data = np.random.randint(0, 50, size=(10,5))
@@ -1862,13 +1899,17 @@ pd.read_excel('data.xls',
               index_col=1) # 指定行索引，B作为行索引
 ```
 
-##### MySQL数据
+##### MySQL 数据
 
-- 需要安装pymysql
-  - pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
-- 需要安装sqlalchemy: 
-  - pip install sqlalchemy -i https://pypi.tuna.tsinghua.edu.cn/simple
-  - sqlalchemy是Python语言下的数据库引擎库, 在Django/Flask中常用ORM库
+- 需要安装 pymysql
+
+  - pip install pymysql -i <https://pypi.tuna.tsinghua.edu.cn/simple>
+
+- 需要安装 sqlalchemy:
+
+  - pip install sqlalchemy -i <https://pypi.tuna.tsinghua.edu.cn/simple>
+
+  - sqlalchemy 是 Python 语言下的数据库引擎库, 在 Django/Flask 中常用 ORM 库
 
 ```python
 from sqlalchemy import create_engine
@@ -1895,10 +1936,11 @@ pd.read_sql('select * from score', # sql查询语句
             index_col='Python') # 指定行索引名
 ```
 
-#### 十一、Pandas分箱操作
+#### 十一、Pandas 分箱操作
 
 - 分箱操作就是将连续型数据离散化。
-- 分箱操作分为等距分箱和等频分箱。 
+
+- 分箱操作分为等距分箱和等频分箱。
 
 ```python
 data = np.random.randint(0,150,size=(150,3))
@@ -1922,19 +1964,26 @@ pd.qcut(df.Python, # 分箱数据
         labels=['差', '中', '良', '优']) # 分箱后分类标签
 ```
 
-#### 十二、Pandas绘图
+#### 十二、Pandas 绘图
 
-- Series和DataFrame都有一个用于生成各类图表的plot方法
-- Pandas的绘图是基于Matplotlib， 可以快速实现基本图形的绘制，复杂的图形还是需要用Matplotlib
+- Series 和 DataFrame 都有一个用于生成各类图表的 plot 方法
+
+- Pandas 的绘图是基于 Matplotlib， 可以快速实现基本图形的绘制，复杂的图形还是需要用 Matplotlib
 
 常见可视化图形:
 
 - 折线图
+
 - 条形图/柱形图
+
 - 饼图
+
 - 散点图
+
 - 箱型图
+
 - 面积图
+
 - 直方图
 
 ##### 1、折线图
@@ -2012,7 +2061,7 @@ df.plot.pie(subplots=True, figsize=(8,8), autopct='%.1f%%')
 
 ##### 4、散点图
 
-- 散点图是观察两个一维数据数列之间的关系的有效方法,DataFrame对象可用
+- 散点图是观察两个一维数据数列之间的关系的有效方法,DataFrame 对象可用
 
 ```python
 # 散点图
@@ -2028,7 +2077,7 @@ df.plot(kind='scatter', x='A', y='B')
 df.plot.scatter(x='A', y='B')  # A和B关系绘制
 ```
 
-#####  5、面积图
+##### 5、面积图
 
 ```python
 # 面积图
@@ -2050,7 +2099,7 @@ df.plot(kind='box')
 
 ```python
 # 直方图
-df = pd.DataFrame({'A': np.random.randn(1000) + 1, 
+df = pd.DataFrame({'A': np.random.randn(1000) + 1,
                     'B': np.random.randn(1000),
                     'C': np.random.randn(1000) - 1})
 df.plot.hist(alpha=0.5) # 带透明度直方图
@@ -2059,4 +2108,3 @@ df.plot.hist(stacked=True)  # 堆叠图
 df['A'].plot(kind='hist')
 df.plot(kind='hist')
 ```
-

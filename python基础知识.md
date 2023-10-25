@@ -873,3 +873,150 @@ repeated_tuple = tuple1 * 3  # 元组重复
 这样，combined_tuple 将会是 (1, 2, "a", "b")，而 repeated_tuple 将会是 (1, 2, 1, 2, 1, 2)。
 ```
 
+#### 3.20 zip函数
+
+```python
+zip函数是Python内置的一个函数，它可以将多个可迭代对象（例如列表、元组等）中对应位置的元素打包成一个新的元组，并返回一个可迭代的zip对象。zip函数的基本语法如下：
+
+zip(*iterables)
+其中，*iterables表示传入的可迭代对象，可以是多个，也可以是一个可迭代对象。
+
+zip函数的工作原理是，它会从每个可迭代对象中依次取出对应位置的元素，将这些元素打包成一个元组，并返回一个包含这些元组的zip对象。zip对象可以通过list()函数或者直接遍历来查看或使用其中的元组。
+
+下面是一些使用zip函数的例子：
+
+numbers = [1, 2, 3]
+letters = ['a', 'b', 'c']
+
+# 将两个列表中对应位置的元素打包成元组
+zipped = zip(numbers, letters)
+print(list(zipped))  # [(1, 'a'), (2, 'b'), (3, 'c')]
+
+# 可以传入多个可迭代对象
+names = ['Alice', 'Bob', 'Charlie']
+ages = [25, 30, 35]
+zipped = zip(names, ages, numbers)
+print(list(zipped))  # [('Alice', 25, 1), ('Bob', 30, 2), ('Charlie', 35, 3)]
+
+# 如果传入的可迭代对象长度不一致，zip函数会以最短的可迭代对象为准
+a = [1, 2, 3]
+b = ['a', 'b']
+zipped = zip(a, b)
+print(list(zipped))  # [(1, 'a'), (2, 'b')]
+
+# 可以使用解压缩操作符*将zip对象拆分成多个列表
+zipped = [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
+names, ages = zip(*zipped)
+print(names)  # ('Alice', 'Bob', 'Charlie')
+print(ages)   # (25, 30, 35)
+需要注意的是，zip函数返回的是一个zip对象，如果要查看其中的元组，可以通过list()函数将其转换为列表。另外，zip函数会以最短的可迭代对象的长度为准进行打包，如果传入的可迭代对象长度不一致，会截断多余的部分。
+
+如何使用zip函数将两个列表合并成一个字典
+要使用zip函数将两个列表合并成一个字典，可以将两个列表作为参数传递给zip函数，并将zip对象转换为字典。
+
+下面是一个示例：
+
+python
+keys = ['name', 'age', 'gender']
+values = ['Alice', 25, 'female']
+
+# 使用zip函数将两个列表合并成一个字典
+result = dict(zip(keys, values))
+print(result)  # {'name': 'Alice', 'age': 25, 'gender': 'female'}
+在上述示例中，keys列表包含了字典的键，values列表包含了字典的值。通过调用zip(keys, values)将两个列表打包成一个zip对象，然后使用dict()函数将zip对象转换为字典。
+```
+
+#### 3.21 dict函数
+
+```python
+dict()函数是Python内置的一个函数，用于创建字典对象。它可以从可迭代对象、关键字参数等不同的输入形式来创建字典。
+
+下面是一些使用dict()函数的常见方式：
+
+从关键字参数创建字典：
+# 使用关键字参数创建字典
+person = dict(name='Alice', age=25, gender='female')
+print(person)  # {'name': 'Alice', 'age': 25, 'gender': 'female'}
+在上述示例中，通过将关键字参数传递给dict()函数，可以直接创建一个包含指定键值对的字典。
+
+从可迭代对象创建字典：
+# 使用可迭代对象创建字典
+items = [('name', 'Alice'), ('age', 25), ('gender', 'female')]
+person = dict(items)
+print(person)  # {'name': 'Alice', 'age': 25, 'gender': 'female'}
+在上述示例中，将包含键值对的可迭代对象（如列表、元组）传递给dict()函数，可以根据可迭代对象中的元素创建字典。
+
+从其他字典或映射对象创建字典：
+# 从其他字典或映射对象创建字典
+person = dict({'name': 'Alice', 'age': 25, 'gender': 'female'})
+print(person)  # {'name': 'Alice', 'age': 25, 'gender': 'female'}
+在上述示例中，可以使用其他字典或映射对象作为参数传递给dict()函数来创建一个新的字典。
+
+需要注意的是，当使用可迭代对象创建字典时，可迭代对象中的元素应该是包含键值对的元组或列表，其中第一个元素表示键，第二个元素表示值。如果可迭代对象中的元素不符合要求，或者出现重复的键，可能会导致错误。
+
+此外，dict()函数还可以用于创建空字典，即不传递任何参数时，将返回一个空字典对象：
+
+python
+empty_dict = dict()
+print(empty_dict)  # {}
+总而言之，dict()函数是一个非常有用的函数，可以根据不同的输入形式创建字典对象。
+```
+
+#### 3.21 print函数
+
+```python
+print()函数是Python中用于输出内容到控制台的内置函数。它可以接受一个或多个参数，并将它们打印到标准输出（通常是终端窗口）。
+
+以下是print()函数的基本语法：
+
+print(value1, value2, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+value1, value2, ...：要打印的值，可以是一个或多个参数。
+sep=' '：可选参数，用于指定打印多个值之间的分隔符，默认为一个空格字符。
+end='\n'：可选参数，用于指定打印结束后的字符，默认为换行符（\n）。
+file=sys.stdout：可选参数，用于指定输出的文件对象，默认为标准输出（终端窗口）。
+flush=False：可选参数，用于指定是否刷新输出缓冲区，默认为False。
+下面是一些示例，演示如何使用print()函数：
+
+# 打印单个值
+print("Hello, world!")
+
+# 打印多个值，使用空格作为分隔符
+print(1, 2, 3, 4, 5)
+
+# 使用自定义分隔符
+print("apple", "banana", "orange", sep=', ')
+
+# 不换行打印多个值
+print(1, 2, 3, end=' ')
+
+# 打印到文件
+with open('output.txt', 'w') as f:
+    print("Hello, file!", file=f)
+这些示例演示了print()函数的一些常见用法。你可以根据需要使用不同的参数来自定义输出的格式和目标位置。
+```
+
+![image-20231025093916162](assets/image-20231025093916162.png)
+
+#### 3.22 ord函数
+
+```python
+ord()函数是Python内置函数之一，用于返回给定字符的Unicode码（整数表示）。它接受一个字符串（只包含一个字符）作为参数，并返回对应字符的Unicode码。
+
+下面是一个使用ord()函数的示例代码：
+
+char = input("请输入一个字符：")
+unicode_value = ord(char)
+print("字符 {} 的Unicode码是：{}".format(char, unicode_value))
+代码解析：
+
+char = input("请输入一个字符：")：使用input()函数接收用户输入的字符，并将其赋值给变量char。
+
+unicode_value = ord(char)：使用ord()函数获取变量char所表示字符的Unicode码，并将结果赋值给变量unicode_value。
+
+print("字符 {} 的Unicode码是：{}".format(char, unicode_value))：使用print()函数打印出字符和对应的Unicode码。通过字符串格式化，将字符和Unicode码插入到输出语句中。
+
+当你运行这段代码并输入一个字符后，程序将返回该字符的Unicode码作为输出。例如，如果你输入字符'A'，则程序会输出：字符 A 的Unicode码是：65。
+
+需要注意的是，ord()函数只接受一个字符作为参数。如果传入的字符串长度超过1个字符，或者为空字符串，则会引发TypeError异常。
+```
+
